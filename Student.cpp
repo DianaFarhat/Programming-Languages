@@ -14,21 +14,49 @@ class Student{
         : id_(genID()), name_(name) {}
 
         void print(){
-            cout << name_ << " ID: "<< id_;
+            cout << name_ << " ID: "<< id_<< endl;;
         }
 
 };
 
 unsigned int Student :: idGenerator_= 0; //class variable initialization
 
+class ExchangeStudent : public Student{// Inherit from Students
+    protected: 
+        string homeUni_;
+
+    public:
+    ExchangeStudent(string name, string homeUni)
+    : Student(name), homeUni_(homeUni) {}
+
+    void print(){
+        cout<< name_<< "ID: "<< id_ << " From: "<< homeUni_ << endl;
+    }
+
+
+
+};
+
+
+
+
+
+
+
 
 int main(){
 
-
+//Students
 Student* s1= new Student("John");
 Student* s2 =new Student( "Jill");
 s1-> print(); //Method dispatch
-cout <<endl;
 s2->print(); //Method dispatch
+//Exchange Students
+ExchangeStudent * s3= new ExchangeStudent("Saddam", "University of Afghanistan");
+ExchangeStudent * s4= new ExchangeStudent ("Zakiya", "University of Afghanistan");
+s3->print();
+s4->print();
+
+
 
 }
